@@ -1,0 +1,13 @@
+"Road user","Sum(Count of cases)","new column"
+"Bus occupant",169,0.4277939501328946
+"Car driver",13327,33.7349702569295
+"Car passenger",4495,11.37830654347551
+"Car unknown position",717,1.8149601316289077
+"Heavy transport driver",383,0.9694975319579799
+"Heavy transport passenger",56,0.14175420832805974
+"Heavy transport unknown position",36,0.09112770535375268
+"Motorcyclist",8883,22.485761296038476
+"Other or unknown",601,1.5213264143779268
+"Pedal cyclist",8163,20.663207188963423
+"Pedestrian",2334,5.908112897101633
+"Pick-up truck or van occupant",341,0.8631818757119353

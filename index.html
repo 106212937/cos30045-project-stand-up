@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Crash: Australian Road Crash Hospitalisations (2011–2021)</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Load D3.js v7 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+  <!-- Header & Context Banner -->
+  <header class="hero">
+    <div class="container">
+      <span class="badge">COS30045 Data Visualisation | Team Dou Duck</span>
+      <h1>Beyond the Crash: The Hidden Burden of Road Injuries in Australia</h1>
+      <p class="subtitle">
+        While road fatalities dominate headlines, tens of thousands of Australians are admitted to hospital every year from non-fatal crashes. Explore the 2011–2021 BITRE dataset to uncover who is most at risk and why raw counts only tell half the story.
+      </p>
+      
+      <!-- Key Metric Summary Cards (2021 Snapshot) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">Hospitalised Injuries (2021)</span>
+          <span class="kpi-value" id="kpi-total">39,505</span>
+          <span class="kpi-note">Verified traffic admissions</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Vulnerable Two-Wheelers</span>
+          <span class="kpi-value">43.1%</span>
+          <span class="kpi-note">Motorcyclists &amp; pedal cyclists combined</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Remote Injury Rate</span>
+          <span class="kpi-value">224.6</span>
+          <span class="kpi-note">Per 100k pop (vs 142.1 in Major Cities)</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Average Hospital Stay</span>
+          <span class="kpi-value">5 Days</span>
+          <span class="kpi-note">Acute bed-day burden (2021)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Narrative Content -->
+  <main class="container">
+
+    <!-- Section 1: Longitudinal Trend (Branch 4) -->
+    <section class="story-section">
+      <div class="section-header">
+        <div>
+          <h2>1. A Decade of Trauma: National Hospitalisation Trends (2011–2021)</h2>
+          <p>
+            National traffic hospitalisations climbed steadily from 34,270 in 2012 to a peak of 40,060 in 2019, before dropping sharply in 2020 during COVID-19 travel restrictions and rebounding to 39,505 in 2021.
+          </p>
+        </div>
+        <div class="controls">
+          <button id="btn-scale-focus" class="btn active">Focused Y-Axis (33k–41k)</button>
+          <button id="btn-scale-zero" class="btn">Zero-Baseline Y-Axis (0–42k)</button>
+        </div>
+      </div>
+      <div class="caveat-box">
+        <strong>Data Governance Note:</strong> Victoria changed admission criteria in July 2012 to exclude Emergency-Department-only stays, and NSW made a similar change in June 2017. Longitudinal comparisons across these structural breaks should be interpreted with caution.
+      </div>
+      <div id="chart-trend" class="chart-container"></div>
+    </section>
+
+    <!-- Two-Column Grid for Section 2 & Section 3 -->
+    <div class="two-col-grid">
+      
+      <!-- Section 2: The Remoteness Paradox (Branch 1) -->
+      <section class="story-section">
+        <div class="section-header-compact">
+          <h2>2. The Remoteness Paradox (2021)</h2>
+          <p>
+            Major Cities record the highest raw volume of injuries due to population size. Toggle to <strong>Rate per 100k Population</strong> to see how per-capita risk reverses in Remote Australia.
+          </p>
+          <div class="controls">
+            <button id="btn-rem-count" class="btn active">Absolute Count (CSV)</button>
+            <button id="btn-rem-rate" class="btn">Rate per 100k Pop</button>
+          </div>
+        </div>
+        <div id="chart-remoteness" class="chart-container"></div>
+      </section>
+
+      <!-- Section 3: Vulnerable Road Users (Branch 2) -->
+      <section class="story-section">
+        <div class="section-header-compact">
+          <h2>3. Disproportionate Risk: Road User Share (2021)</h2>
+          <p>
+            While car drivers account for the largest single group (33.7%), <strong>motorcyclists (22.5%)</strong> and <strong>pedal cyclists (20.7%)</strong> together represent over 43% of all traffic hospitalisations.
+          </p>
+        </div>
+        <div id="chart-roaduser" class="chart-container"></div>
+      </section>
+
+    </div>
+
+    <!-- Section 4: Demographic Vulnerability by Age (Branch 3) -->
+    <section class="story-section">
+      <div class="section-header">
+        <div>
+          <h2>4. Demographic Profile: Hospitalisations by Age Cohort (2021)</h2>
+          <p>
+            In raw numbers, the broader 40–64 age bracket records the highest count (13,026 cases) simply because it spans 25 years of population. However, young adults aged <strong>17–25</strong> face the steepest per-capita hospitalisation rate in Australia.
+          </p>
+        </div>
+      </div>
+      <div id="chart-age" class="chart-container"></div>
+    </section>
+
+  </main>
+
+  <!-- Shared Tooltip Element -->
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Data Source: Bureau of Infrastructure and Transport Research Economics (BITRE) &amp; Australian Institute of Health and Welfare (NHMD), 2011–2021.</p>
+      <p>Designed &amp; Built with D3.js by Team Dou Duck (Ngai Jun Min &amp; Partner) — Swinburne University of Technology.</p>
+    </div>
+  </footer>
+
+  <!-- Load the 4 Modular D3 Chart Scripts -->
+  <script src="js/trend.js"></script>
+  <script src="js/remoteness.js"></script>
+  <script src="js/roaduser.js"></script>
+  <script src="js/age.js"></script>
+</body>
+</html>
