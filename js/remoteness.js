@@ -15,18 +15,18 @@
   };
   const remotenessOrder = ["Major Cities", "Regional", "Remote"];
 
-  d3.csv("data/remoteness_2021.csv").then(raw => {
-    const data = raw
-      .filter(d => d["ABS remoteness area"] && d["ABS remoteness area"] !== "Missing")
-      .map(d => {
-        const area = d["ABS remoteness area"].trim();
-        return {
-          area: area,
-          cases: getCount(d),
-          rate: rateLookup[area] || 0
-        };
-      })
-      .sort((a, b) => remotenessOrder.indexOf(a.area) - remotenessOrder.indexOf(b.area));
+d3.csv("data/combined_data.csv").then(raw => {
+  const data = raw
+    .filter(d => d["Dataset"] === "Remoteness" && d["Category"] !== "Missing")
+    .map(d => {
+      const area = d["Category"].trim();
+      return {
+        area: area,
+        cases: getCount(d),
+        rate: rateLookup[area] || 0
+      };
+    })
+    .sort((a, b) => remotenessOrder.indexOf(a.area) - remotenessOrder.indexOf(b.area));
 
     const width = 500, height = 270;
     const margin = { top: 20, right: 65, bottom: 40, left: 100 };

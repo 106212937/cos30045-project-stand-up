@@ -13,7 +13,7 @@
   <!-- Header & Context Banner -->
   <header class="hero">
     <div class="container">
-      <span class="badge">COS30045 Data Visualisation | Team Dou Duck</span>
+      <span class="badge">COS30045 Data Visualisation | Group 19</span>
       <h1>Beyond the Crash: The Hidden Burden of Road Injuries in Australia</h1>
       <p class="subtitle">
         While road fatalities dominate headlines, tens of thousands of Australians are admitted to hospital every year from non-fatal crashes. Explore the 2011–2021 BITRE dataset to uncover who is most at risk and why raw counts only tell half the story.
@@ -57,9 +57,9 @@
             National traffic hospitalisations climbed steadily from 34,270 in 2012 to a peak of 40,060 in 2019, before dropping sharply in 2020 during COVID-19 travel restrictions and rebounding to 39,505 in 2021.
           </p>
         </div>
-        <div class="controls">
-          <button id="btn-scale-focus" class="btn active">Focused Y-Axis (33k–41k)</button>
-          <button id="btn-scale-zero" class="btn">Zero-Baseline Y-Axis (0–42k)</button>
+        <div class="controls" role="group" aria-label="Y-Axis Scale Toggle">
+          <button id="btn-scale-focus" type="button" class="btn active" aria-pressed="true">Focused Y-Axis (33k–41k)</button>
+          <button id="btn-scale-zero" type="button" class="btn" aria-pressed="false">Zero-Baseline Y-Axis (0–42k)</button>
         </div>
       </div>
       <div class="caveat-box">
@@ -78,10 +78,10 @@
           <p>
             Major Cities record the highest raw volume of injuries due to population size. Toggle to <strong>Rate per 100k Population</strong> to see how per-capita risk reverses in Remote Australia.
           </p>
-          <div class="controls">
-            <button id="btn-rem-count" class="btn active">Absolute Count (CSV)</button>
-            <button id="btn-rem-rate" class="btn">Rate per 100k Pop</button>
-          </div>
+          <div class="controls" role="group" aria-label="Remoteness Metric Toggle">
+          <button id="btn-rem-count" type="button" class="btn active" aria-pressed="true">Absolute Count (CSV)</button>
+          <button id="btn-rem-rate" type="button" class="btn" aria-pressed="false">Rate per 100k Pop</button>
+        </div>
         </div>
         <div id="chart-remoteness" class="chart-container"></div>
       </section>
@@ -112,6 +112,10 @@
       <div id="chart-age" class="chart-container"></div>
     </section>
 
+    <div class="instructions">
+      <strong>How to explore this data story:</strong> Click the toggle buttons to switch scales, hover your mouse over chart elements, or press the <strong>Tab</strong> and <strong>Arrow keys</strong> on your keyboard to inspect data points and tooltips.
+    </div>
+
   </main>
 
   <!-- Shared Tooltip Element -->
@@ -121,11 +125,17 @@
   <footer class="footer">
     <div class="container">
       <p>Data Source: Bureau of Infrastructure and Transport Research Economics (BITRE) &amp; Australian Institute of Health and Welfare (NHMD), 2011–2021.</p>
-      <p>Designed &amp; Built with D3.js by Team Dou Duck (Ngai Jun Min &amp; Partner) — Swinburne University of Technology.</p>
+      <p>Designed &amp; Built with D3.js by Group 19 (Ngai Jun Min &amp; Hong Ji Han &amp; Abdullah Al Shafayet Sporsho) — Swinburne University of Technology.</p>
     </div>
   </footer>
 
-  <!-- Load the 4 Modular D3 Chart Scripts -->
+<div id="tooltip" class="tooltip" role="tooltip"></div>
+  
+  <!-- Week 8: Visually Hidden Live Region for Screen Reader Announcements -->
+  <div id="tooltip-announcer" aria-live="polite" class="sr-only"></div>
+
+  <!-- Load Responsive Text Scaling & Modular D3 Chart Scripts -->
+  <script src="js/resize.js"></script>
   <script src="js/trend.js"></script>
   <script src="js/remoteness.js"></script>
   <script src="js/roaduser.js"></script>

@@ -7,9 +7,11 @@
     return +val;
   }
 
-  d3.csv("data/trend_2011_2021.csv").then(raw => {
-    const data = raw.map(d => ({
-      year: +d["Calendar year"],
+d3.csv("data/combined_data.csv").then(raw => {
+  const data = raw
+    .filter(d => d["Dataset"] === "Trend")
+    .map(d => ({
+      year: +d["Category"],
       cases: getCount(d)
     })).sort((a, b) => a.year - b.year);
 

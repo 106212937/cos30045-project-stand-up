@@ -10,9 +10,11 @@
 
   const ageOrder = ["0-7", "8-16", "17-25", "26-39", "40-64", "65-74", "75+", "≥75"];
 
-  d3.csv("data/age_group_2021.csv").then(raw => {
-    const data = raw.map(d => ({
-      age: (d["Age group"] || "").trim(),
+d3.csv("data/combined_data.csv").then(raw => {
+  const data = raw
+    .filter(d => d["Dataset"] === "AgeGroup")
+    .map(d => ({
+      age: (d["Category"] || "").trim(),
       cases: getCount(d)
     })).sort((a, b) => ageOrder.indexOf(a.age) - ageOrder.indexOf(b.age));
 

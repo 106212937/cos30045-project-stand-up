@@ -239,3 +239,35 @@ svg {
     grid-template-columns: 1fr;
   }
 }
+/* Week 8: Visually Hidden Screen Reader Live Region */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Week 8: Explicit Interaction Cues Banner */
+.instructions {
+  background-color: #e0f2fe;
+  border-left: 4px solid var(--navy-mid);
+  color: var(--navy-dark);
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+/* Week 8: High-Contrast Keyboard Focus Ring for SVG Data Marks */
+.dot:focus,
+.bar:focus,
+.age-bar:focus,
+.donut-slice:focus {
+  outline: 3px solid var(--amber-warn);
+  outline-offset: 2px;
+}

@@ -8,19 +8,19 @@
     return +val;
   }
 
-  d3.csv("data/road_user_2021.csv").then(raw => {
-    let otherSum = 0;
-    const data = [];
+d3.csv("data/combined_data.csv").then(raw => {
+  let otherSum = 0;
+  const data = [];
 
-    raw.forEach(d => {
-      const user = (d["Road user"] || "").trim();
-      const cases = getCount(d);
-      if (cases >= 1000 && user !== "Not applicable") {
-        data.push({ user, cases });
-      } else if (user !== "Not applicable") {
-        otherSum += cases;
-      }
-    });
+  raw.filter(d => d["Dataset"] === "RoadUser").forEach(d => {
+    const user = (d["Category"] || "").trim();
+    const cases = getCount(d);
+    if (cases >= 1000 && user !== "Not applicable") {
+      data.push({ user, cases });
+    } else if (user !== "Not applicable") {
+      otherSum += cases;
+    }
+  });
 
     data.sort((a, b) => b.cases - a.cases);
     if (otherSum > 0) {
